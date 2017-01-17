@@ -1,8 +1,7 @@
 package org.usfirst.frc.team4619.robot;
-
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-
-import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,6 +15,51 @@ public class OI {
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
+	Joystick xbox = new Joystick(0);
+	public Button A;
+	public Button B;
+	public Button X;
+	public Button Y;
+	public Button L_BUMPER;
+	public Button R_BUMPER;
+	public Button BACK;
+	public Button START;
+
+	
+	public int[] buttonValues = {RobotMap.A, RobotMap.B, RobotMap.X, RobotMap.Y,
+			 RobotMap.L_BUMPER, RobotMap.R_BUMPER, RobotMap.BACK, RobotMap.START};
+
+	public Button [] buttons = {A, B, X, Y, L_BUMPER, R_BUMPER, BACK, START};
+	
+	public void setButtonValues()
+	{
+		for(Button xboxButtons:buttons)
+		{
+			for(int values:buttonValues)
+			{
+				xboxButtons = new JoystickButton(xbox, values);
+			}
+		}
+	}
+	
+	public OI()
+	{
+		setButtonValues();
+	}
+	
+	public double getXAxis()
+	{
+		return xbox.getRawAxis(0);
+	}
+	
+	public double getYAxis()
+	{
+		return xbox.getRawAxis(1);
+	}
+	
+	
+
+	
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
