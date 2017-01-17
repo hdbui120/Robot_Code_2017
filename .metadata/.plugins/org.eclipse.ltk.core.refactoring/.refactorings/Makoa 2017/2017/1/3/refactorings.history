@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;Makoa 2017&apos;&#x0D;&#x0A;- Original project: &apos;Makoa 2017&apos;&#x0D;&#x0A;- Original element: &apos;Makoa 2017/src/org.usfirst.frc.team4619.robot.triggers&apos;" description="Delete element" element1="/src&lt;org.usfirst.frc.team4619.robot.triggers" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1484624914703" subPackages="false" version="1.0"/>
+</session>
