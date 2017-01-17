@@ -1,33 +1,47 @@
 package org.usfirst.frc.team4619.robot.subsystems;
 
-import org.usfirst.frc.team4619.robot.RobotMap;
+import org.usfirst.frc.team4619.robot.commands.TeleopDrive;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveBase extends Subsystem{
 
-	VictorSP frontLeft = new VictorSP(RobotMap.PWM_PORT_0);
-	VictorSP frontRight = new VictorSP(RobotMap.PWM_PORT_2);
-	VictorSP backLeft = new VictorSP(RobotMap.PWM_PORT_1);
-	VictorSP backRight = new VictorSP(RobotMap.PWM_PORT_3);
+	private SpeedController frontLeft;
+	private SpeedController backLeft; 
+	private SpeedController frontRight; 
+	private SpeedController backRight;
 	
+	//created robotdrive object to implement it in the arcadeDrive method
+	private RobotDrive driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	
-	public DriveBase(VictorSP fl, VictorSP fr, VictorSP bl, VictorSP br) {
+	//class constructor allows us to assign specific speed controllers
+	public DriveBase(SpeedController fl, SpeedController fr, SpeedController bl, SpeedController br) {
 		frontLeft = fl;
 		frontRight = fr;
 		backLeft = bl;
 		backRight = br;
 	}
 	
+	//regular class constructor
 	public DriveBase() {
 		
 	}
 	
+	//whenever we initialize the drive base class
+	//teleopdrive will be the default command, which will let the driver control the robot manually
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		
+		setDefaultCommand(new TeleopDrive());
+	}
+	
+	//this method set the drive style which is arcade drive
+	public void arcadeDrive(double xAxis, double yAxis)
+	{
+		driveTrain.arcadeDrive(xAxis, yAxis, true);
 	}
 	
 	public void moveForward() {

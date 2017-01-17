@@ -1,10 +1,15 @@
 package org.usfirst.frc.team4619.robot.commands;
 
+import org.usfirst.frc.team4619.robot.OI;
+import org.usfirst.frc.team4619.robot.subsystems.DriveBase;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 public class CommandBase extends Command{
 
 	public static OI oi;
+	public static DriveBase driveTrain = new DriveBase();
+	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub

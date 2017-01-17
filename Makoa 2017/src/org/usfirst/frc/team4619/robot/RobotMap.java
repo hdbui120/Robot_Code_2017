@@ -7,7 +7,7 @@ package org.usfirst.frc.team4619.robot;
  * floating around.
  */
 public class RobotMap {
-<<<<<<< HEAD
+
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;
@@ -29,7 +29,6 @@ public class RobotMap {
 	public final static int X_AXIS = 0;
 	public final static int Y_AXIS = 1;
 
-=======
 	//Create PWM Ports
 	public final static int PWM_PORT_0 = 0;
 	public final static int PWM_PORT_1 = 1;
@@ -56,5 +55,9 @@ public class RobotMap {
 	
 	//Create Xbox Port
 	public final static int XBOX_PORT = 0;
->>>>>>> origin/master
+	
+	//Created xbox x and y axes values
+	public final static int XBOX_XAXIS = 0;
+	public final static int XBOX_YAXIS = 1;
+
 }

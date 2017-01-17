@@ -8,14 +8,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
+	//created xbox joystick object
 	Joystick xbox = new Joystick(0);
+	
+	//created buttons for xbox joysticks
 	public Button A;
 	public Button B;
 	public Button X;
@@ -25,12 +21,14 @@ public class OI {
 	public Button BACK;
 	public Button START;
 
-	
+	//an array list of all the button values
 	public int[] buttonValues = {RobotMap.A, RobotMap.B, RobotMap.X, RobotMap.Y,
 			 RobotMap.L_BUMPER, RobotMap.R_BUMPER, RobotMap.BACK, RobotMap.START};
 
+	//an array list of all the buttons
 	public Button [] buttons = {A, B, X, Y, L_BUMPER, R_BUMPER, BACK, START};
 	
+	//this method uses enhance for loops to assgin values to all the buttons
 	public void setButtonValues()
 	{
 		for(Button xboxButtons:buttons)
@@ -42,19 +40,23 @@ public class OI {
 		}
 	}
 	
+	//constructor
+	//basically assign values to all the buttons by calling the setButtonValues method
 	public OI()
 	{
 		setButtonValues();
 	}
 	
+	//this method return the raw value of the xbox x-axis
 	public double getXAxis()
 	{
-		return xbox.getRawAxis(0);
+		return xbox.getRawAxis(RobotMap.XBOX_XAXIS);
 	}
 	
+	//this method return the raw value of the xbox y-axis
 	public double getYAxis()
 	{
-		return xbox.getRawAxis(1);
+		return xbox.getRawAxis(RobotMap.XBOX_YAXIS);
 	}
 	
 	
