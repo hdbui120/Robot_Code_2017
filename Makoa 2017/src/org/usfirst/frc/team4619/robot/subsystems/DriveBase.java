@@ -15,7 +15,7 @@ public class DriveBase extends Subsystem{
 	private SpeedController backRight;
 	
 	//created robotdrive object to implement it in the arcadeDrive method
-	private RobotDrive driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
+	public RobotDrive driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	
 	//class constructor allows us to assign specific speed controllers
 	public DriveBase(SpeedController fl, SpeedController fr, SpeedController bl, SpeedController br) {

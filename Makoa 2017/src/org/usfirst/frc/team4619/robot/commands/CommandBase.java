@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CommandBase extends Command{
 
 	public static OI oi;
-	public static DriveBase driveTrain = new DriveBase();
+	public static DriveBase driveMech = new DriveBase();
 	
 	@Override
 	protected void initialize() {

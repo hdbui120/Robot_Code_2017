@@ -4,7 +4,7 @@ public class TeleopDrive extends CommandBase {
 
 	public TeleopDrive()
 	{
-		requires(driveTrain);
+		requires(driveMech);
 	}
 
 	@Override
@@ -14,7 +14,7 @@ public class TeleopDrive extends CommandBase {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.arcadeDrive(oi.getXAxis(), oi.getYAxis());
+		driveMech.arcadeDrive(oi.getXAxis(), oi.getYAxis());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
