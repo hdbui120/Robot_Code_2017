@@ -40,8 +40,6 @@ public class ForwardGyro extends CommandBase implements PIDOutput{
 			kI = 1;
 			kD = 2.5;
 			zeroDegree = 0;
-			minInputGyro = -90.0;
-			maxInputGyro = 90.0;
 			minOutput = -1.0;
 			maxOutput = 1.0;
 			
@@ -51,25 +49,28 @@ public class ForwardGyro extends CommandBase implements PIDOutput{
 			/**
 			 * initialize pid controller(gyro as input source and pid controller
 			 * will automatically calculate the output)
-			 * set input range for the pid controller
+			 * set input range for the pid controller(continuous)
 			 * set the set point for pid controller
 			 * set output range for pid controller
 			 */
 			pidController = new PIDController(kP, kI, kD, gyro, this);
-			pidController.setInputRange(minInputGyro, maxInputGyro);
+			pidController.setContinuous();
 			pidController.setSetpoint(zeroDegree);
 			pidController.setOutputRange(minOutput, maxOutput);
+			pidController.setAbsoluteTolerance(.1);
 		}
 
 		
 		@Override
 		protected void execute() {
 			pidController.enable();
+			
 		}
 
 		
 		@Override
 		protected boolean isFinished() {
+			System.out.println("The robot is on target" + pidController.onTarget());
 			return false;
 		}
 
