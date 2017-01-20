@@ -1,4 +1,6 @@
 package org.usfirst.frc.team4619.robot;
+
+import org.usfirst.frc.team4619.robot.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -9,7 +11,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	//created xbox joystick object
-	Joystick xbox = new Joystick(0);
+	Joystick xbox = new Joystick(RobotMap.XBOX_PORT);
 	
 	//created buttons for xbox joysticks
 	public Button A;
@@ -30,13 +32,10 @@ public class OI {
 	
 	//this method uses enhance for loops to assgin values to all the buttons
 	public void setButtonValues()
-	{
-		for(Button xboxButtons:buttons)
+	{		
+		for (int i = 0; i < buttonValues.length; i++)
 		{
-			for(int values:buttonValues)
-			{
-				xboxButtons = new JoystickButton(xbox, values);
-			}
+			buttons[i] = new JoystickButton(xbox, buttonValues[i]);
 		}
 	}
 	
