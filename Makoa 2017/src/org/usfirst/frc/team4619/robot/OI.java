@@ -32,13 +32,10 @@ public class OI {
 	
 	//this method uses enhance for loops to assgin values to all the buttons
 	public void setButtonValues()
-	{
-		for(Button xboxButtons:buttons)
+	{		
+		for (int i = 0; i < buttonValues.length; i++)
 		{
-			for(int values:buttonValues)
-			{
-				xboxButtons = new JoystickButton(xbox, values);
-			}
+			buttons[i] = new JoystickButton(xbox, buttonValues[i]);
 		}
 	}
 	
