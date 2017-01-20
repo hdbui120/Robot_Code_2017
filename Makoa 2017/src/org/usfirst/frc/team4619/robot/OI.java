@@ -1,4 +1,6 @@
 package org.usfirst.frc.team4619.robot;
+
+import org.usfirst.frc.team4619.robot.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -9,7 +11,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	//created xbox joystick object
-	Joystick xbox = new Joystick(0);
+	Joystick xbox = new Joystick(RobotMap.XBOX_PORT);
 	
 	//created buttons for xbox joysticks
 	public Button A;
