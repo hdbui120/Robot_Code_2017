@@ -24,9 +24,13 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+<<<<<<< HEAD
 	
 	public static DriveBase driveBase;
 
+=======
+	public static DriveBase driveBase;
+>>>>>>> origin/master
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
@@ -82,7 +86,9 @@ public class Robot extends IterativeRobot {
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
+		{
 			autonomousCommand.start();
+		}
 	}
 
 	/**
