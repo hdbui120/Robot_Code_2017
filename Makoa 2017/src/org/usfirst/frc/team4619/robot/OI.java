@@ -30,7 +30,7 @@ public class OI {
 	//an array list of all the buttons
 	public Button [] buttons = {A, B, X, Y, L_BUMPER, R_BUMPER, BACK, START};
 	
-	//this method uses enhance for loops to assgin values to all the buttons
+	//this method uses enhance for loops to assign values to all the buttons
 	public void setButtonValues()
 	{		
 		for (int i = 0; i < buttonValues.length; i++)

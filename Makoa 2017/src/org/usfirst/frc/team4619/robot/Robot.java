@@ -2,6 +2,7 @@
 package org.usfirst.frc.team4619.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -23,12 +24,9 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
-<<<<<<< HEAD
 	
-=======
 	public static DriveBase driveBase;
 
->>>>>>> origin/master
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
