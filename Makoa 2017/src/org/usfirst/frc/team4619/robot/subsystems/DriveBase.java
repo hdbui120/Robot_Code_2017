@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4619.robot.subsystems;
 
-import org.usfirst.frc.team4619.robot.commands.TeleopDrive;
-
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 
@@ -35,7 +33,6 @@ public class DriveBase extends Subsystem{
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		setDefaultCommand(new TeleopDrive());
 	}
 	
 	//this method set the drive style which is arcade drive

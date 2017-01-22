@@ -24,13 +24,9 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
-<<<<<<< HEAD
 	
+	public static VictorSP frontL, backL, frontR, backR;
 	public static DriveBase driveBase;
-
-=======
-	public static DriveBase driveBase;
->>>>>>> origin/master
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
@@ -44,7 +40,11 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-		driveBase = new DriveBase();
+		frontL = new VictorSP(RobotMap.PWM_PORT_0);
+		backL = new VictorSP(RobotMap.PWM_PORT_1);
+		frontR = new VictorSP(RobotMap.PWM_PORT_2);
+		backR = new VictorSP(RobotMap.PWM_PORT_3);
+		driveBase = new DriveBase(frontL, backL, frontR, backR);	
 	}
 
 	/**
@@ -115,6 +115,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		driveBase.arcadeDrive(oi.getXAxis(), oi.getYAxis());
 		
 	}
 
