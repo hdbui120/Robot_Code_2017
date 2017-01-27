@@ -21,6 +21,12 @@ public class Gear extends Subsystem {
     	setDefaultCommand(new DoNothing());
     }
     
+    public SpeedController getMotor()
+    {
+		return x;
+    	
+    }
+    
     public Gear(){
     	
     }
@@ -33,5 +39,6 @@ public class Gear extends Subsystem {
     public void moveArm(double speed){
     	x.set(speed);
     }
+    
+    
 }
-

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4619.robot;
 
 import org.usfirst.frc.team4619.robot.RobotMap;
+import org.usfirst.frc.team4619.robot.commands.gearKickCheck;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -44,6 +46,7 @@ public class OI {
 	public OI()
 	{
 		setButtonValues();
+		A.whenReleased(new gearKickCheck());
 	}
 	
 	//this method return the raw value of the xbox x-axis
@@ -57,6 +60,7 @@ public class OI {
 	{
 		return xbox.getRawAxis(RobotMap.XBOX_YAXIS);
 	}
+	
 	
 	
 
