@@ -1,20 +1,19 @@
 package org.usfirst.frc.team4619.robot.commands;
 
-public class DoNothing extends CommandBase {
+public class HoldGear extends CommandBase {
 	
-	public DoNothing()
+	public HoldGear()
 	{
 		requires(gearMech);
 	}
 	
 	protected void initialize()
 	{
-		
 	}
 	
 	protected void execute()
 	{
-		gearMech.stop();
+		gearMech.closeArm();
 	}
 	
 	protected boolean isFinished()
@@ -24,11 +23,11 @@ public class DoNothing extends CommandBase {
 	
 	protected void end()
 	{
-		
+		gearMech.stop();
 	}
 	
 	protected void interrupted()
 	{
-		
+		gearMech.stop();
 	}
 }

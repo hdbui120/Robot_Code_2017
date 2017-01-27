@@ -3,7 +3,6 @@ package org.usfirst.frc.team4619.robot.commands;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveDistanceTest extends CommandBase implements PIDOutput{
 	

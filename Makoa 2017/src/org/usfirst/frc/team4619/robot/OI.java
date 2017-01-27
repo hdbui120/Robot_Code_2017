@@ -1,6 +1,10 @@
 package org.usfirst.frc.team4619.robot;
 
+import java.util.HashMap;
+
 import org.usfirst.frc.team4619.robot.RobotMap;
+import org.usfirst.frc.team4619.robot.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -22,28 +26,28 @@ public class OI {
 	public Button R_BUMPER;
 	public Button BACK;
 	public Button START;
-
-	//an array list of all the button values
-	public int[] buttonValues = {RobotMap.A, RobotMap.B, RobotMap.X, RobotMap.Y,
-			 RobotMap.L_BUMPER, RobotMap.R_BUMPER, RobotMap.BACK, RobotMap.START};
-
-	//an array list of all the buttons
-	public Button [] buttons = {A, B, X, Y, L_BUMPER, R_BUMPER, BACK, START};
 	
-	//this method uses enhance for loops to assign values to all the buttons
-	public void setButtonValues()
-	{		
-		for (int i = 0; i < buttonValues.length; i++)
-		{
-			buttons[i] = new JoystickButton(xbox, buttonValues[i]);
-		}
-	}
+	public HashMap<String, JoystickButton> buttons = new HashMap<String, JoystickButton>();
 	
-	//constructor
-	//basically assign values to all the buttons by calling the setButtonValues method
 	public OI()
 	{
-		setButtonValues();
+		// Setup buttons		
+		buttons.put("A", new JoystickButton(xbox, RobotMap.A));
+		buttons.put("B", new JoystickButton(xbox, RobotMap.B));
+		buttons.put("X", new JoystickButton(xbox, RobotMap.X));
+		buttons.put("Y", new JoystickButton(xbox, RobotMap.Y));
+		buttons.put("L_BUMPER", new JoystickButton(xbox, RobotMap.L_BUMPER));
+		buttons.put("R_BUMPER", new JoystickButton(xbox, RobotMap.R_BUMPER));
+		buttons.put("BACK", new JoystickButton(xbox, RobotMap.BACK));
+		buttons.put("START", new JoystickButton(xbox, RobotMap.START));
+		
+		this.setCommands();
+	}
+	
+	public void setCommands()
+	{
+		buttons.get("L_BUMPER").whenPressed(new HoldGear());
+		buttons.get("R_BUMPER").whenPressed(new DropGear());
 	}
 	
 	//this method return the raw value of the xbox x-axis

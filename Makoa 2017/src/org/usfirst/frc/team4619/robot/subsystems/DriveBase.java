@@ -41,33 +41,63 @@ public class DriveBase extends Subsystem{
 		driveTrain.arcadeDrive(xAxis, yAxis, true);
 	}
 	
-	public void moveForward() {
-		frontLeft.set(0.75);
-		frontRight.set(-0.75);
-		backLeft.set(0.75);
-		backRight.set(-0.75);
+	public void moveForward()
+	{
+		this.moveForward(0.75);
 	}
+	
+	public void moveForward(double speed) {
+		speed = Math.abs(speed);
+		frontLeft.set(speed);
+		frontRight.set(-speed);
+		backLeft.set(speed);
+		backRight.set(-speed);
+	}
+	
+	public void moveBack()
+	{
+		this.moveBack(0.75);
+	}	
 
-	public void moveBack() {
-		frontLeft.set(-0.75);
-		frontRight.set(0.75);
-		backLeft.set(-0.75);
-		backRight.set(0.75);
+	public void moveBack(double speed) {
+		speed = Math.abs(speed);
+		frontLeft.set(-speed);
+		frontRight.set(speed);
+		backLeft.set(-speed);
+		backRight.set(speed);
 	}
 	
-	public void turnLeft() {
-		frontLeft.set(-0.75);
-		frontRight.set(-0.75);
-		backLeft.set(-0.75);
-		backRight.set(-0.75);
+	public void turnLeft()
+	{
+		this.turnLeft(0.75);
 	}
 	
-	public void turnRight() {
-		frontLeft.set(0.75);
-		frontRight.set(0.75);
-		backLeft.set(0.75);
-		backRight.set(0.75);
+	public void turnLeft(double speed) {
+		speed = Math.abs(speed);
+		frontLeft.set(-speed);
+		frontRight.set(-speed);
+		backLeft.set(-speed);
+		backRight.set(-speed);
 	}
 	
+	public void turnRight()
+	{
+		this.turnRight(0.75);
+	}
 	
+	public void turnRight(double speed) {
+		speed = Math.abs(speed);
+		frontLeft.set(speed);
+		frontRight.set(speed);
+		backLeft.set(speed);
+		backRight.set(speed);
+	}
+	
+	public void stop()
+	{
+		frontLeft.set(0);
+		frontRight.set(0);
+		backLeft.set(0);
+		backRight.set(0);
+	}
 }
