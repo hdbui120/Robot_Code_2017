@@ -13,9 +13,10 @@ public class DriveBase extends Subsystem{
 	private SpeedController frontRight; 
 	private SpeedController backRight;
 	
+	public RobotDrive driveTrain;
+	
 	private double noVector = 0;
-	//created robotdrive object to implement it in the arcadeDrive method
-	public RobotDrive driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
+	
 	
 	//class constructor allows us to assign specific speed controllers
 	public DriveBase(SpeedController fl, SpeedController fr, SpeedController bl, SpeedController br) 
@@ -24,6 +25,7 @@ public class DriveBase extends Subsystem{
 		frontRight = fr;
 		backLeft = bl;
 		backRight = br;
+		driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	}
 	
 	//regular class constructor
@@ -32,6 +34,8 @@ public class DriveBase extends Subsystem{
 		
 	}
 	
+	DriveBase driveObject = new DriveBase();
+	
 	//whenever we initialize the drive base class
 	//teleopdrive will be the default command, which will let the driver control the robot manually
 	@Override
@@ -39,12 +43,6 @@ public class DriveBase extends Subsystem{
 	{
 		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveJoystick());
-	}
-	
-	//this method set the drive style which is arcade drive
-	public void arcadeDrive(double xAxis, double yAxis)
-	{
-		driveTrain.arcadeDrive(xAxis, yAxis);
 	}
 	
 	public void doNothing()

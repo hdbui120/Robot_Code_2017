@@ -9,7 +9,7 @@ public class DriveJoystick extends CommandBase {
 	
 	public void execute()
 	{
-		driveMech.arcadeDrive(oi.getXAxis(), oi.getYAxis());
+		driveMech.driveTrain.arcadeDrive(oi.getYAxis(), oi.getXAxis(), true);
 	}
 	
 	public boolean isFinished()
