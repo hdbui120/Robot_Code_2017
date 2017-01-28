@@ -20,7 +20,7 @@ public class CommandBase extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
+		// TODO Auto-gene rated method stub
 		return false;
 	}
 
