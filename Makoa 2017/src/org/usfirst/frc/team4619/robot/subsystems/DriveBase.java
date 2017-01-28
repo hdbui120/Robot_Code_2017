@@ -14,7 +14,8 @@ public class DriveBase extends Subsystem{
 	private SpeedController backRight;
 	
 	private double noVector = 0;
-	
+	//created robotdrive object to implement it in the arcadeDrive method
+	public RobotDrive driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	
 	//class constructor allows us to assign specific speed controllers
 	public DriveBase(SpeedController fl, SpeedController fr, SpeedController bl, SpeedController br) 
@@ -43,9 +44,7 @@ public class DriveBase extends Subsystem{
 	//this method set the drive style which is arcade drive
 	public void arcadeDrive(double xAxis, double yAxis)
 	{
-		//created robotdrive object to implement it in the arcadeDrive method
-		RobotDrive driveTrain = new RobotDrive( this.frontLeft, this.backLeft, this.frontRight, this.backRight);
-		driveTrain.arcadeDrive(xAxis, yAxis, true);
+		driveTrain.arcadeDrive(xAxis, yAxis);
 	}
 	
 	public void doNothing()

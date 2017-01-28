@@ -1,4 +1,4 @@
-/**package org.usfirst.frc.team4619.robot.commands;
+package org.usfirst.frc.team4619.robot.commands;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PIDController;
@@ -55,4 +55,4 @@ public class DriveDistanceTest extends CommandBase implements PIDOutput{
 		driveMech.driveTrain.drive(output, 0);
 	}
 
-}**/
+}
