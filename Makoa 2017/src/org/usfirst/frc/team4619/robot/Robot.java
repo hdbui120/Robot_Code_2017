@@ -1,6 +1,10 @@
 
 package org.usfirst.frc.team4619.robot;
 
+import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4619.robot.subsystems.DriveBase;
+import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,10 +12,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4619.robot.subsystems.DriveBase;
-import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,6 +22,8 @@ import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
+	final String defaultCommand = "Default Command";
+	
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	
@@ -30,6 +32,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
+	long startTime;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -44,7 +47,11 @@ public class Robot extends IterativeRobot {
 		backL = new VictorSP(RobotMap.PWM_PORT_1);
 		frontR = new VictorSP(RobotMap.PWM_PORT_2);
 		backR = new VictorSP(RobotMap.PWM_PORT_3);
+		
+		//initialize drive base
 		driveBase = new DriveBase(frontL, backL, frontR, backR);	
+		
+		
 	}
 
 	/**
@@ -89,6 +96,7 @@ public class Robot extends IterativeRobot {
 		{
 			autonomousCommand.start();
 		}
+		startTime = System.currentTimeMillis();	
 	}
 
 	/**
@@ -97,6 +105,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		if(System.currentTimeMillis() - startTime < 3000)
+		{
+			driveBase.moveForward(.45);
+		}
+		else
+		{
+			driveBase.doNothing();
+		}
 	}
 
 	@Override
@@ -115,7 +131,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		driveBase.arcadeDrive(oi.getXAxis(), oi.getYAxis());
 		
 	}
 

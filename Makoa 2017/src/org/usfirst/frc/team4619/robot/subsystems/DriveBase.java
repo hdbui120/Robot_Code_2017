@@ -1,8 +1,9 @@
 package org.usfirst.frc.team4619.robot.subsystems;
 
+import org.usfirst.frc.team4619.robot.commands.DriveJoystick;
+
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveBase extends Subsystem{
@@ -12,6 +13,7 @@ public class DriveBase extends Subsystem{
 	private SpeedController frontRight; 
 	private SpeedController backRight;
 	
+	private double noVector = 0;
 	//created robotdrive object to implement it in the arcadeDrive method
 	public RobotDrive driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	
@@ -33,12 +35,18 @@ public class DriveBase extends Subsystem{
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
+		setDefaultCommand(new DriveJoystick());
 	}
 	
 	//this method set the drive style which is arcade drive
 	public void arcadeDrive(double xAxis, double yAxis)
 	{
-		driveTrain.arcadeDrive(xAxis, yAxis, true);
+		driveTrain.arcadeDrive(xAxis, yAxis);
+	}
+	
+	public void doNothing()
+	{
+		frontLeft.set(noVector);
 	}
 	
 	public void moveForward() {
