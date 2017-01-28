@@ -16,7 +16,8 @@ public class DriveBase extends Subsystem{
 	public RobotDrive driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	
 	//class constructor allows us to assign specific speed controllers
-	public DriveBase(SpeedController fl, SpeedController fr, SpeedController bl, SpeedController br) {
+	public DriveBase(SpeedController fl, SpeedController fr, SpeedController bl, SpeedController br) 
+	{
 		frontLeft = fl;
 		frontRight = fr;
 		backLeft = bl;
@@ -24,15 +25,18 @@ public class DriveBase extends Subsystem{
 	}
 	
 	//regular class constructor
-	public DriveBase() {
+	public DriveBase() 
+	{
 		
 	}
 	
 	//whenever we initialize the drive base class
 	//teleopdrive will be the default command, which will let the driver control the robot manually
 	@Override
-	protected void initDefaultCommand() {
+	protected void initDefaultCommand() 
+	{
 		// TODO Auto-generated method stub
+		
 	}
 	
 	//this method set the drive style which is arcade drive
@@ -41,33 +45,56 @@ public class DriveBase extends Subsystem{
 		driveTrain.arcadeDrive(xAxis, yAxis, true);
 	}
 	
-	public void moveForward() {
-		frontLeft.set(0.75);
-		frontRight.set(-0.75);
-		backLeft.set(0.75);
-		backRight.set(-0.75);
+	public void moveForward() 
+	{
+		moveForward(0.75);
+	}
+	
+	public void moveForward(double speed)
+	{
+		frontLeft.set(speed);
+		frontRight.set(-speed);
+		backLeft.set(speed);
+		backRight.set(-speed);
 	}
 
-	public void moveBack() {
-		frontLeft.set(-0.75);
-		frontRight.set(0.75);
-		backLeft.set(-0.75);
-		backRight.set(0.75);
+	public void moveBack() 
+	{
+		moveBack(.75);
 	}
 	
-	public void turnLeft() {
-		frontLeft.set(-0.75);
-		frontRight.set(-0.75);
-		backLeft.set(-0.75);
-		backRight.set(-0.75);
+	public void moveBack(double speed)
+	{
+		frontLeft.set(-speed);
+		frontRight.set(speed);
+		backLeft.set(-speed);
+		backRight.set(speed);
 	}
 	
-	public void turnRight() {
-		frontLeft.set(0.75);
-		frontRight.set(0.75);
-		backLeft.set(0.75);
-		backRight.set(0.75);
+	public void turnLeft()
+	{
+		turnLeft(.75);
 	}
 	
+	public void turnLeft(double speed) 
+	{
+		frontLeft.set(-speed);
+		frontRight.set(-speed);
+		backLeft.set(-speed);
+		backRight.set(-speed);
+	}
+
+	public void turnRight()
+	{
+		turnRight(.75);
+	}
+	
+	public void turnRight(double speed) 
+	{
+		frontLeft.set(speed);
+		frontRight.set(speed);
+		backLeft.set(speed);
+		backRight.set(speed);
+	} 
 	
 }
