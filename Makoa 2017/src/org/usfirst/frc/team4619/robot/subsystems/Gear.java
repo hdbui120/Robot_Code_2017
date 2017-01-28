@@ -25,6 +25,11 @@ public class Gear extends Subsystem {
     	
     }
     
+    public double motorVector()
+    {
+    	return x.get();
+    }
+    
     public void notSpin()
     {
     	x.set(motorNotSpin);

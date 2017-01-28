@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4619.robot;
 
-import org.usfirst.frc.team4619.robot.RobotMap;
+import org.usfirst.frc.team4619.robot.commands.MoveGearArm;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -44,6 +45,7 @@ public class OI {
 	public OI()
 	{
 		setButtonValues();
+		A.whenPressed(new MoveGearArm());
 	}
 	
 	//this method return the raw value of the xbox x-axis
