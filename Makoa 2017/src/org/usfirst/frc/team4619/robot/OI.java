@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4619.robot;
 
 import org.usfirst.frc.team4619.robot.RobotMap;
-import org.usfirst.frc.team4619.robot.commands.gearKickCheck;
 import org.usfirst.frc.team4619.robot.commands.MoveGearArm;
 
 import edu.wpi.first.wpilibj.Joystick;

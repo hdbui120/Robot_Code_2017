@@ -17,32 +17,31 @@ public class DriveBase extends Subsystem{
 	
 	private double noVector = 0;
 	
-	
-	//class constructor allows us to assign specific speed controllers
-	public DriveBase(SpeedController fl, SpeedController fr, SpeedController bl, SpeedController br) 
+	public DriveBase(SpeedController fl, SpeedController bl, SpeedController fr, SpeedController br)
 	{
 		frontLeft = fl;
-		frontRight = fr;
 		backLeft = bl;
+		frontRight = fr;
 		backRight = br;
 		driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	}
 	
-	//regular class constructor
-	public DriveBase() 
+	public void arcadeDriv(double y, double x)
 	{
-		
+		driveTrain.arcadeDrive(y, x, true);
 	}
 	
-	DriveBase driveObject = new DriveBase();
-	
-	//whenever we initialize the drive base class
-	//teleopdrive will be the default command, which will let the driver control the robot manually
-	@Override
+		@Override
 	protected void initDefaultCommand() 
 	{
 		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveJoystick());
+	} 
+		
+	//regular class constructor
+	public DriveBase() 
+	{
+		
 	}
 	
 	public void doNothing()
@@ -100,6 +99,8 @@ public class DriveBase extends Subsystem{
 		frontRight.set(speed);
 		backLeft.set(speed);
 		backRight.set(speed);
-	} 
+	}
+
+
 	
 }
