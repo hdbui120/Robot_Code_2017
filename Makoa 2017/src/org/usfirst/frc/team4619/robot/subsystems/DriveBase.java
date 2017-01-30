@@ -2,29 +2,43 @@ package org.usfirst.frc.team4619.robot.subsystems;
 
 import org.usfirst.frc.team4619.robot.commands.DriveJoystick;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
-public class DriveBase extends Subsystem{
+public class DriveBase extends PIDSubsystem{
+
+	
 
 	private SpeedController frontLeft;
 	private SpeedController backLeft; 
 	private SpeedController frontRight; 
 	private SpeedController backRight;
+	private Encoder encoder;
+	private final static double p = 2;
+	private final static double i = .75;
+	private final static double d = 1;
 	
 	public RobotDrive driveTrain;
 	
-	private double noVector = 0;
-	
-	public DriveBase(SpeedController fl, SpeedController bl, SpeedController fr, SpeedController br)
-	{
+	public DriveBase(SpeedController fl, SpeedController bl, SpeedController fr, SpeedController br) {
+		super("DriveBase", p, i, d);
 		frontLeft = fl;
 		backLeft = bl;
 		frontRight = fr;
 		backRight = br;
-		driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
+	    encoder = new Encoder(2,3, false);
+	    driveTrain = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	}
+	
+	public DriveBase()
+	{
+		super("DriveBase", p, i, d);
+		encoder = new Encoder(2,3, false);
+	}
+	
+	private double noVector = 0;
 	
 	public void arcadeDriv(double y, double x)
 	{
@@ -37,12 +51,6 @@ public class DriveBase extends Subsystem{
 		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveJoystick());
 	} 
-		
-	//regular class constructor
-	public DriveBase() 
-	{
-		
-	}
 	
 	public void doNothing()
 	{
@@ -101,6 +109,21 @@ public class DriveBase extends Subsystem{
 		backRight.set(speed);
 	}
 
+	public Encoder getencoder() {
+		return encoder;
+	}
 
+
+	@Override
+	protected double returnPIDInput() {
+		// TODO Auto-generated method stub
+		return encoder.get();
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		// TODO Auto-generated method stub
+		arcadeDriv(output, output);
+	}
 	
 }

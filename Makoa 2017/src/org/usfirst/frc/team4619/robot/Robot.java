@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Gear Base", new ExampleCommand());//need to modify command
 		chooser.addObject("Base Gear", new ExampleCommand());//need to modify command
 		
-		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Sup Chrissy, pick one", chooser);
 		frontL = new VictorSP(RobotMap.PWM_PORT_0);
 		backL = new VictorSP(RobotMap.PWM_PORT_1);
 		frontR = new VictorSP(RobotMap.PWM_PORT_2);
