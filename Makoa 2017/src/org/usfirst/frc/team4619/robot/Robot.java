@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
 	public static VictorSP frontL, backL, frontR, backR;
 	public static DriveBase driveBase;
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser<Command> chooser;
 	
 	long startTime;
 	/**
@@ -40,8 +40,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser = new SendableChooser<>();
+		chooser.addDefault("Default Auto", new ExampleCommand());//need to modify command
+		chooser.addObject("Base Line", new ExampleCommand());//need to modify command
+		chooser.addObject("Gear Only", new ExampleCommand());//need to modify command
+		chooser.addObject("High goal", new ExampleCommand());//need to modify command
+		chooser.addObject("Gear Base", new ExampleCommand());//need to modify command
+		chooser.addObject("Base Gear", new ExampleCommand());//need to modify command
+		
 		SmartDashboard.putData("Auto mode", chooser);
 		frontL = new VictorSP(RobotMap.PWM_PORT_0);
 		backL = new VictorSP(RobotMap.PWM_PORT_1);
@@ -82,7 +88,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		autonomousCommand = (Command) chooser.getSelected();
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -101,18 +107,11 @@ public class Robot extends IterativeRobot {
 
 	/**
 	 * This function is called periodically during autonomous
+	 * It's all good
 	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		if(System.currentTimeMillis() - startTime < 3000)
-		{
-			driveBase.moveForward(.45);
-		}
-		else
-		{
-			driveBase.doNothing();
-		}
 	}
 
 	@Override
