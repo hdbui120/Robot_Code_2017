@@ -15,7 +15,7 @@ public class DriveJoystick extends CommandBase {
 	public void execute()
 	{
 		System.out.println(oi.getYAxis());
-		driveMech.arcadeDriv(oi.getYAxis(), oi.getXAxis());
+		driveMech.arcadeDrive(oi.getYAxis(), oi.getXAxis());
 	}
 	
 	public boolean isFinished()

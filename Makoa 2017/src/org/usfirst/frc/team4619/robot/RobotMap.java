@@ -25,9 +25,6 @@ public class RobotMap {
 	public final static int R_BUMPER = 6;
 	public final static int BACK = 7;
 	public final static int START = 8;
-	
-	public final static int X_AXIS = 0;
-	public final static int Y_AXIS = 1;
 
 	//Create PWM Ports
 	public final static int PWM_PORT_0 = 0;
