@@ -32,7 +32,9 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
 	
-	long startTime;
+	public static DriveBase driveTrain;
+	
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -49,13 +51,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Base Gear", new ExampleCommand());//need to modify command
 		
 		SmartDashboard.putData("Sup Chrissy, pick one", chooser);
-		frontL = new VictorSP(RobotMap.PWM_PORT_0);
-		backL = new VictorSP(RobotMap.PWM_PORT_1);
-		frontR = new VictorSP(RobotMap.PWM_PORT_2);
-		backR = new VictorSP(RobotMap.PWM_PORT_3);
-		
-		//initialize drive base
-		driveBase = new DriveBase(frontL, backL, frontR, backR);	
+		driveTrain = new DriveBase();
 		
 		
 	}
@@ -102,7 +98,7 @@ public class Robot extends IterativeRobot {
 		{
 			autonomousCommand.start();
 		}
-		startTime = System.currentTimeMillis();	
+		
 	}
 
 	/**
