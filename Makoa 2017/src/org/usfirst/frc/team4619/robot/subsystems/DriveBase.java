@@ -13,10 +13,10 @@ public class DriveBase extends PIDSubsystem{
 
 	
 
-	private VictorSP frontL = new VictorSP(RobotMap.PWM_PORT_0);
-	private VictorSP backL = new VictorSP(RobotMap.PWM_PORT_1);
-	private VictorSP frontR = new VictorSP(RobotMap.PWM_PORT_2);
-	private VictorSP backR = new VictorSP(RobotMap.PWM_PORT_3);
+	private VictorSP frontL = new VictorSP(RobotMap.PWM_PORT_2);
+	private VictorSP backL = new VictorSP(RobotMap.PWM_PORT_0);
+	private VictorSP frontR = new VictorSP(RobotMap.PWM_PORT_5);
+	private VictorSP backR = new VictorSP(RobotMap.PWM_PORT_1);
 	private Encoder encoder = new Encoder(0,1, false);
 	private final static double p = 2;
 	private final static double i = .75;
@@ -36,7 +36,7 @@ public class DriveBase extends PIDSubsystem{
 		driveTrain.arcadeDrive(y, x, true);
 	}
 	
-		@Override
+	@Override
 	protected void initDefaultCommand() 
 	{
 		// TODO Auto-generated method stub

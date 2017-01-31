@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4619.robot;
 
+import org.usfirst.frc.team4619.robot.commands.CommandBase;
 import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4619.robot.subsystems.DriveBase;
 import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
@@ -25,14 +26,9 @@ public class Robot extends IterativeRobot {
 	final String defaultCommand = "Default Command";
 	
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static OI oi;
 	
-	public static VictorSP frontL, backL, frontR, backR;
-	public static DriveBase driveBase;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
-	
-	public static DriveBase driveTrain;
 	
 
 	/**
@@ -41,7 +37,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
 		chooser = new SendableChooser<>();
 		chooser.addDefault("Default Auto", new ExampleCommand());//need to modify command
 		chooser.addObject("Base Line", new ExampleCommand());//need to modify command
@@ -51,9 +46,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Base Gear", new ExampleCommand());//need to modify command
 		
 		SmartDashboard.putData("Sup Chrissy, pick one", chooser);
-		driveTrain = new DriveBase();
 		
-		
+		CommandBase.init();
 	}
 
 	/**

@@ -9,13 +9,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CommandBase extends Command{
 
 	public static OI oi;
-	public static DriveBase driveMech = new DriveBase();
-	public static Gear gearMech = new Gear();
+	public static DriveBase driveMech;
+	public static Gear gearMech;
 	
-	@Override
-	protected void initialize() {
-		// TODO Auto-generated method stub
+	public static void init() {
 		oi = new OI();
+		driveMech = new DriveBase();
+		gearMech = new Gear();
 	}	
 	
 	@Override

@@ -3,6 +3,7 @@ package org.usfirst.frc.team4619.robot.subsystems;
 import org.usfirst.frc.team4619.robot.commands.DoNothing;
 
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -12,7 +13,7 @@ public class Gear extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private SpeedController x;
+	private SpeedController x = new VictorSP(8);
 	private double motorNotSpin = 0;
 	
     public void initDefaultCommand() {
