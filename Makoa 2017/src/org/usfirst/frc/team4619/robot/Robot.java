@@ -3,6 +3,7 @@ package org.usfirst.frc.team4619.robot;
 
 import org.usfirst.frc.team4619.robot.commands.CommandBase;
 import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4619.robot.commands.RobotTurn;
 import org.usfirst.frc.team4619.robot.subsystems.DriveBase;
 import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
 
@@ -45,7 +46,10 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Gear Base", new ExampleCommand());//need to modify command
 		chooser.addObject("Base Gear", new ExampleCommand());//need to modify command
 		
-		SmartDashboard.putData("Sup Chrissy, pick one", chooser);
+		//calibrate the gyro
+		RobotTurn.gyro.calibrate();
+		
+		SmartDashboard.putData("Sup Chrissy, pick one: ", chooser);
 		
 		CommandBase.init();
 	}

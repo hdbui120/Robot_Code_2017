@@ -15,6 +15,9 @@ public class RobotTurn extends PIDCommand{
 		super("Turn", kp, ki, kd);
 		this.setPoint = setPoint;
 		this.getPIDController().setSetpoint(this.setPoint);
+		this.getPIDController().setContinuous();
+		gyro.reset();
+		System.out.println("Gyro is resetted");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,7 +30,7 @@ public class RobotTurn extends PIDCommand{
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		CommandBase.driveMech.driveTrain.arcadeDrive(0, output);
+		CommandBase.driveMech.driveTrain.drive(0, output);
 	}
 
 	protected boolean isOnPath()
