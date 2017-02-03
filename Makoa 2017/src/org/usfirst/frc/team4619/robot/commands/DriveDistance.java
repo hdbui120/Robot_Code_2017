@@ -39,7 +39,7 @@ public class DriveDistance extends CommandBase{
 	public boolean isInRange()
 	{
 		double tolerance;
-		tolerance = Math.abs(setPoint - driveMech.getEncoder().get());
+		tolerance = Math.abs(setPoint - driveMech.getRightEncoder().get());
 		if(tolerance < .2)
 			return true;
 		return false;

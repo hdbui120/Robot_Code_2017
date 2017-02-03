@@ -15,6 +15,7 @@ public class DriveJoystick extends CommandBase {
 	public void execute()
 	{
 		driveMech.arcadeDrive(oi.getYAxis(), oi.getXAxis());
+		System.out.println("Left encoder ticks" + driveMech.getLeftEncoder()+ "\n" + "Right encoder ticks" + driveMech.getRightEncoder());
 	}
 	
 	public boolean isFinished()

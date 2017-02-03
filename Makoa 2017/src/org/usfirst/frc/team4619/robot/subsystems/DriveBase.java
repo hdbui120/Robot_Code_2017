@@ -17,7 +17,8 @@ public class DriveBase extends PIDSubsystem{
 	private VictorSP backL = new VictorSP(RobotMap.PWM_PORT_0);
 	private VictorSP frontR = new VictorSP(RobotMap.PWM_PORT_5);
 	private VictorSP backR = new VictorSP(RobotMap.PWM_PORT_1);
-	private Encoder encoder;
+	private Encoder rightEncoder;
+	private Encoder leftEncoder;
 	private final static double p = 2;
 	private final static double i = .75;
 	private final static double d = 1;
@@ -26,7 +27,8 @@ public class DriveBase extends PIDSubsystem{
 	
 	public DriveBase() {
 		super("DriveBase", p, i, d);
-		encoder = new Encoder(0,1, false);
+		rightEncoder = new Encoder(0, 1, false);
+		leftEncoder = new Encoder(2, 3, true);
 	    driveTrain = new RobotDrive(frontL, backL, frontR, backR);
 	}
 	
@@ -102,15 +104,19 @@ public class DriveBase extends PIDSubsystem{
 		backR.set(speed);
 	}
 
-	public Encoder getEncoder() {
-		return encoder;
+	public Encoder getRightEncoder() {
+		return rightEncoder;
 	}
 
-
+	public Encoder getLeftEncoder()
+	{
+		return leftEncoder;
+	}
+	
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
-		return encoder.get();
+		return rightEncoder.get();
 	}
 
 	@Override
