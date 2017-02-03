@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4619.robot;
 
 import org.usfirst.frc.team4619.robot.RobotMap;
+import org.usfirst.frc.team4619.robot.commands.CommandBase;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -22,7 +24,9 @@ public class OI {
 	public Button R_BUMPER;
 	public Button BACK;
 	public Button START;
-
+	
+	private int pressed = 0;
+	
 	//an array list of all the button values
 	public int[] buttonValues = {RobotMap.A, RobotMap.B, RobotMap.X, RobotMap.Y,
 			 RobotMap.L_BUMPER, RobotMap.R_BUMPER, RobotMap.BACK, RobotMap.START};
@@ -43,7 +47,16 @@ public class OI {
 	//basically assign values to all the buttons by calling the setButtonValues method
 	public OI()
 	{
-		setButtonValues();
+		setButtonValues();		
+		shoot();
+	}
+	
+	public void shoot()
+	{
+		if(xbox.getRawAxis(RobotMap.R_TRIGGER)>pressed)
+			CommandBase.shooterMech.Shoot();
+		else
+			CommandBase.shooterMech.doNothing();
 	}
 	
 	//this method return the raw value of the xbox x-axis
