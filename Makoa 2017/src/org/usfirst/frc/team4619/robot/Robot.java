@@ -5,11 +5,9 @@ import org.usfirst.frc.team4619.robot.commands.CommandBase;
 import org.usfirst.frc.team4619.robot.commands.DriveDistance;
 import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4619.robot.commands.RobotTurn;
-import org.usfirst.frc.team4619.robot.subsystems.DriveBase;
 import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -39,6 +37,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		CommandBase.init();
+		
 		chooser = new SendableChooser<>();
 		chooser.addDefault("Default Auto", new ExampleCommand());//need to modify command
 		chooser.addObject("Base Line", new DriveDistance(7561));//need to modify command
@@ -51,8 +51,6 @@ public class Robot extends IterativeRobot {
 		RobotTurn.gyro.calibrate();
 		System.out.println("gyro calibrated");
 		SmartDashboard.putData("Sup Chrissy, pick one: ", chooser);
-		
-		CommandBase.init();
 	}
 
 	/**

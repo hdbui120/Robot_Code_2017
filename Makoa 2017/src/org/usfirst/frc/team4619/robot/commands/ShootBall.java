@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4619.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 public class ShootBall extends CommandBase{
 
 	double shootingSpeed;
