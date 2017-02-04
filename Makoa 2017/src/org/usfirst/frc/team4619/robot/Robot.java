@@ -5,6 +5,7 @@ import org.usfirst.frc.team4619.robot.commands.CommandBase;
 import org.usfirst.frc.team4619.robot.commands.DriveDistance;
 import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4619.robot.commands.RobotTurn;
+import org.usfirst.frc.team4619.robot.commands.gearBaseLine;
 import org.usfirst.frc.team4619.robot.subsystems.DriveBase;
 import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
 
@@ -40,12 +41,11 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		chooser = new SendableChooser<>();
-		chooser.addDefault("Default Auto", new ExampleCommand());//need to modify command
+		chooser.addDefault("Default Auto", new DriveDistance(4));//need to modify command
 		chooser.addObject("Base Line", new DriveDistance(7561));//need to modify command
-		chooser.addObject("Gear Only", new ExampleCommand());//need to modify command
+		chooser.addObject("Gear Only", new DriveDistance(9999999));//need to modify command
 		chooser.addObject("High goal", new ExampleCommand());//need to modify command
-		chooser.addObject("Gear Base", new ExampleCommand());//need to modify command
-		chooser.addObject("Base Gear", new ExampleCommand());//need to modify command
+		chooser.addObject("Gear Base", new gearBaseLine());//need to modify command
 		
 		//calibrate the gyro
 		RobotTurn.gyro.calibrate();
