@@ -6,6 +6,6 @@ public class TeleopDriveGyro extends CommandGroup{
 	public TeleopDriveGyro()
 	{
 		addParallel(new DriveJoystick());
-		addParallel(new RobotTurn(0));
+		addParallel(new ZeroDegree());
 	}
 }

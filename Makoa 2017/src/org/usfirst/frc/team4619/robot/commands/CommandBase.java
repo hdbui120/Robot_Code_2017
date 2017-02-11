@@ -14,6 +14,7 @@ public class CommandBase extends Command{
 	
 	public static void init() {
 		oi = new OI();
+		driveMech.gyro.calibrate();
 	}	
 	
 	@Override

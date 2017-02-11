@@ -13,9 +13,9 @@ public class gearBaseLine extends CommandGroup {
 	{
 		addSequential(new DriveDistance(3696));
 		addSequential(new DriveDistance(-((3696)/2)));
-		addSequential(new RobotTurn(90));
+		addSequential(new Turn(90));
 		addSequential(new DriveDistance(4816));
-		addSequential(new RobotTurn(-90));
+		addSequential(new Turn(-90));
 		addSequential(new DriveDistance(3696/2));
 	}
 
