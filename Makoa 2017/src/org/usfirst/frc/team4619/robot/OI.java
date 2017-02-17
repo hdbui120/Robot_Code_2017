@@ -2,6 +2,7 @@ package org.usfirst.frc.team4619.robot;
 
 import org.usfirst.frc.team4619.robot.commands.CommandBase;
 import org.usfirst.frc.team4619.robot.commands.StopClimb;
+import org.usfirst.frc.team4619.robot.commands.StopRobot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -30,6 +31,7 @@ public class OI {
 	
 	//create button for logitech joystick
 	public Button TRIGGER;
+	public Button BUTTON3;
 	
 	private int pressed = 0;
 	
@@ -49,6 +51,7 @@ public class OI {
 		}
 		
 		TRIGGER = new JoystickButton(logitech, RobotMap.TRIGGER);
+		BUTTON3 = new JoystickButton(logitech, RobotMap.BUTTON3);
 	}
 	
 	//constructor
@@ -58,6 +61,7 @@ public class OI {
 		setButtonValues();		
 		shoot();
 		TRIGGER.whenPressed(new StopClimb());
+		BUTTON3.whenPressed(new StopRobot());
 		
 	}
 	

@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4619.robot.subsystems;
 
 import org.usfirst.frc.team4619.robot.RobotMap;
-import org.usfirst.frc.team4619.robot.commands.RobotClimb;
+import org.usfirst.frc.team4619.robot.commands.StopClimb;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -16,7 +16,7 @@ public class Climber extends Subsystem
 	protected void initDefaultCommand() 
 	{
 		// TODO Auto-generated method stub
-		setDefaultCommand(new RobotClimb(zeroSpeed));
+		setDefaultCommand(new StopClimb());
 	}	
 	
 	public Climber()

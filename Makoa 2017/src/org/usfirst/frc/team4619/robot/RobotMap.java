@@ -30,6 +30,7 @@ public class RobotMap {
 	
 	//this constant is for the logitech button 
 	public final static int TRIGGER = 0;
+	public final static int BUTTON3 = 3;
 	
 	//Create PWM Ports
 	public final static int PWM_PORT_0 = 0;
@@ -59,7 +60,7 @@ public class RobotMap {
 	public final static int XBOX_PORT = 0;
 	
 	//Create Logitech Port
-	public final static int LOGITECH_PORT = 0;
+	public final static int LOGITECH_PORT = 1;
 	
 	//Created xbox x and y axes values
 	public final static int XBOX_XAXIS = 0;
