@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4619.robot;
 
-import org.usfirst.frc.team4619.robot.RobotMap;
 import org.usfirst.frc.team4619.robot.commands.CommandBase;
+import org.usfirst.frc.team4619.robot.commands.StopClimb;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -15,6 +15,9 @@ public class OI {
 	//created xbox joystick object
 	Joystick xbox = new Joystick(RobotMap.XBOX_PORT);
 	
+	//created logitech joystick object
+	Joystick logitech = new Joystick(RobotMap.LOGITECH_PORT);
+	
 	//created buttons for xbox joysticks
 	public Button A;
 	public Button B;
@@ -24,6 +27,9 @@ public class OI {
 	public Button R_BUMPER;
 	public Button BACK;
 	public Button START;
+	
+	//create button for logitech joystick
+	public Button TRIGGER;
 	
 	private int pressed = 0;
 	
@@ -41,6 +47,8 @@ public class OI {
 		{
 			buttons[i] = new JoystickButton(xbox, buttonValues[i]);
 		}
+		
+		TRIGGER = new JoystickButton(logitech, RobotMap.TRIGGER);
 	}
 	
 	//constructor
@@ -49,6 +57,8 @@ public class OI {
 	{
 		setButtonValues();		
 		shoot();
+		TRIGGER.whenPressed(new StopClimb());
+		
 	}
 	
 	public void shoot()
@@ -58,6 +68,7 @@ public class OI {
 		else
 			CommandBase.shooterMech.doNothing();
 	}
+	
 	
 	//this method return the raw value of the xbox x-axis
 	public double getXAxis()
@@ -70,6 +81,7 @@ public class OI {
 	{
 		return xbox.getRawAxis(RobotMap.XBOX_YAXIS);
 	}
+	
 	
 	
 	
