@@ -13,6 +13,7 @@ public class Climber extends Subsystem
 	CANTalon motor;
 	double climbSpeed;
 	double zeroSpeed = 0;
+	
 
 	protected void initDefaultCommand() 
 	{
@@ -49,8 +50,8 @@ public class Climber extends Subsystem
 		motor.set(zeroSpeed);
 	}
 	
-	public void doNothing() {
+	public void doNothing() 
+	{
 		motor.set(zeroSpeed);
 	}
-
 }
