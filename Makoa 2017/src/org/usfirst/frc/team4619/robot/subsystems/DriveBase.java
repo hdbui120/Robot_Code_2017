@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4619.robot.subsystems;
 
 import org.usfirst.frc.team4619.robot.RobotMap;
-import org.usfirst.frc.team4619.robot.commands.TeleopDriveGyro;
+import org.usfirst.frc.team4619.robot.commands.DriveJoystick;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
@@ -46,7 +46,7 @@ public class DriveBase extends PIDSubsystem{
 	protected void initDefaultCommand() 
 	{
 		// TODO Auto-generated method stub
-		setDefaultCommand(new TeleopDriveGyro());
+		setDefaultCommand(new DriveJoystick());
 	} 
 	
 	public void doNothing()

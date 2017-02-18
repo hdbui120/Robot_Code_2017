@@ -64,6 +64,6 @@ public class RobotMap {
 	
 	//Created xbox x and y axes values
 	public final static int XBOX_XAXIS = 0;
-	public final static int XBOX_YAXIS = 1;
+	public final static int XBOX_YAXIS = 4;
 
 }
