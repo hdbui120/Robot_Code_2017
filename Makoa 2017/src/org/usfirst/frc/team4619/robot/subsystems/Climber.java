@@ -40,13 +40,8 @@ public class Climber extends Subsystem
 	public void Climb(double climbSpeed)
 	{
 		this.climbSpeed = climbSpeed;
-		if(climbSpeed<6)
+		if(climbSpeed<10)
 		motor.set(climbSpeed);
-	}
-	
-	public void Climb()
-	{
-		motor.set(.5);
 	}
 	
 	public void StopClimb()

@@ -61,7 +61,7 @@ public class OI {
 	{
 		setButtonValues();		
 		shoot();
-		A.whenPressed(new RobotClimb(5));
+		A.whenPressed(new RobotClimb(8));
 		TRIGGER.whenPressed(new StopClimb());
 		BUTTON3.whenPressed(new StopRobot());
 		
