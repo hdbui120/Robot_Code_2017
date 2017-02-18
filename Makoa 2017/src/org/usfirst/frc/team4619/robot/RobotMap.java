@@ -32,6 +32,8 @@ public class RobotMap {
 	public final static int TRIGGER = 0;
 	public final static int BUTTON3 = 3;
 	
+	public final static int CAN_PORT_1 = 1;
+	
 	//Create PWM Ports
 	public final static int PWM_PORT_0 = 0;
 	public final static int PWM_PORT_1 = 1;

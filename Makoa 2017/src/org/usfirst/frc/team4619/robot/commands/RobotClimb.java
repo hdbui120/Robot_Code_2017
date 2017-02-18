@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4619.robot.commands;
 
+import com.ctre.CANTalon.TalonControlMode;
+
 public class RobotClimb extends CommandBase
 {
 	double climbingSpeed;
@@ -12,6 +14,8 @@ public class RobotClimb extends CommandBase
 	
 	protected void initialize() 
 	{
+		climberMech.getMotor().changeControlMode(TalonControlMode.Voltage);
+		climberMech.getMotor().set(0);
 		climberMech.Climb(climbingSpeed);
 	}
 	

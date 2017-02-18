@@ -7,6 +7,8 @@ import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4619.robot.commands.gearBaseLine;
 import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -27,7 +29,6 @@ public class Robot extends IterativeRobot {
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
-	
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -44,6 +45,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("High goal", new ExampleCommand());//need to modify command
 		chooser.addObject("Gear Base", new gearBaseLine());//need to modify command
 		
+		CameraServer.getInstance().startAutomaticCapture();
 		SmartDashboard.putData("Sup Chrissy, pick one: ", chooser);
 	}
 

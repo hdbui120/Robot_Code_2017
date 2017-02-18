@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4619.robot;
 
 import org.usfirst.frc.team4619.robot.commands.CommandBase;
+import org.usfirst.frc.team4619.robot.commands.RobotClimb;
 import org.usfirst.frc.team4619.robot.commands.StopClimb;
 import org.usfirst.frc.team4619.robot.commands.StopRobot;
 
@@ -60,6 +61,7 @@ public class OI {
 	{
 		setButtonValues();		
 		shoot();
+		A.whenPressed(new RobotClimb(5));
 		TRIGGER.whenPressed(new StopClimb());
 		BUTTON3.whenPressed(new StopRobot());
 		
