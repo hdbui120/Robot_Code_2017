@@ -6,6 +6,7 @@ import org.usfirst.frc.team4619.robot.commands.DriveJoystick;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -31,6 +32,7 @@ public class DriveBase extends PIDSubsystem{
 		rightEncoder = new Encoder(0, 1, false);
 		leftEncoder = new Encoder(2, 3, true);
 		gyro = new ADXRS450_Gyro();
+		gyro.calibrate();
 	    driveTrain = new RobotDrive(frontL, backL, frontR, backR);
 	}
 	

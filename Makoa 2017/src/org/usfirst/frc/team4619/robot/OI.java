@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4619.robot;
 
-import org.usfirst.frc.team4619.robot.commands.CommandBase;
+import org.usfirst.frc.team4619.robot.commands.HalfSpeedDrive;
 import org.usfirst.frc.team4619.robot.commands.RobotClimb;
 import org.usfirst.frc.team4619.robot.commands.StopClimb;
 import org.usfirst.frc.team4619.robot.commands.StopRobot;
@@ -60,21 +60,20 @@ public class OI {
 	public OI()
 	{
 		setButtonValues();		
-		shoot();
-		A.whenPressed(new RobotClimb(8));
+		buttons[0].whileHeld(new RobotClimb(16));
+		buttons[1].whileHeld(new RobotClimb(-11));
 		TRIGGER.whenPressed(new StopClimb());
 		BUTTON3.whenPressed(new StopRobot());
-		
+		driveHalfSpeed();
 	}
 	
-	public void shoot()
+	public void driveHalfSpeed()
 	{
-		if(xbox.getRawAxis(RobotMap.R_TRIGGER)>pressed)
-			CommandBase.shooterMech.Shoot();
-		else
-			CommandBase.shooterMech.doNothing();
+		while(xbox.getRawAxis(RobotMap.L_TRIGGER)>0)
+		{
+			new HalfSpeedDrive();
+		}
 	}
-	
 	
 	//this method return the raw value of the xbox x-axis
 	public double getXAxis()

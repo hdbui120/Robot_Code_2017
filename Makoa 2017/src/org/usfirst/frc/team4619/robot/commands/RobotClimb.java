@@ -17,6 +17,7 @@ public class RobotClimb extends CommandBase
 		climberMech.getMotor().changeControlMode(TalonControlMode.Voltage);
 		climberMech.getMotor().set(0);
 		climberMech.Climb(climbingSpeed);
+		System.out.println("Robot is climbing at: " + climberMech.getMotor().getOutputVoltage() + "volts");
 	}
 	
 	protected void execute() 

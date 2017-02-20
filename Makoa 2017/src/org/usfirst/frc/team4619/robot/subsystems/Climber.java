@@ -26,7 +26,7 @@ public class Climber extends Subsystem
 		motor = new CANTalon(RobotMap.CAN_PORT_1);
 		motor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		motor.configNominalOutputVoltage(0, 0);
-		motor.configPeakOutputVoltage(12, 12);
+		motor.configMaxOutputVoltage(12);
 		motor.setProfile(0);
 		motor.setP(0);
 		motor.setI(0);
@@ -41,7 +41,7 @@ public class Climber extends Subsystem
 	public void Climb(double climbSpeed)
 	{
 		this.climbSpeed = climbSpeed;
-		if(climbSpeed<10)
+		if(climbSpeed<20)
 		motor.set(climbSpeed);
 	}
 	

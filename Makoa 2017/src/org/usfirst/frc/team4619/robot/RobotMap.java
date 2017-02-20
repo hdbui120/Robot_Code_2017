@@ -65,7 +65,7 @@ public class RobotMap {
 	public final static int LOGITECH_PORT = 1;
 	
 	//Created xbox x and y axes values
-	public final static int XBOX_XAXIS = 0;
+	public final static int XBOX_XAXIS = 1;
 	public final static int XBOX_YAXIS = 4;
 
 }

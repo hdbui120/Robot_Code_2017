@@ -4,6 +4,7 @@ package org.usfirst.frc.team4619.robot;
 import org.usfirst.frc.team4619.robot.commands.CommandBase;
 import org.usfirst.frc.team4619.robot.commands.DriveDistance;
 import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4619.robot.commands.ZeroDegree;
 import org.usfirst.frc.team4619.robot.commands.gearBaseLine;
 import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
 
@@ -29,7 +30,7 @@ public class Robot extends IterativeRobot {
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
-
+	UsbCamera cam;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -44,9 +45,13 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Gear Only", new DriveDistance(3696));//need to modify command
 		chooser.addObject("High goal", new ExampleCommand());//need to modify command
 		chooser.addObject("Gear Base", new gearBaseLine());//need to modify command
-		
-		CameraServer.getInstance().startAutomaticCapture();
+		chooser.addObject("Drive Straight 3s", new ZeroDegree(2));
 		SmartDashboard.putData("Sup Chrissy, pick one: ", chooser);
+
+		cam = CameraServer.getInstance().startAutomaticCapture();
+		cam.setResolution(160, 120);
+		cam.setFPS(30);
+		
 	}
 
 	/**
@@ -62,6 +67,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		cam.free();
 	}
 
 	/**
@@ -78,7 +84,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = (Command) chooser.getSelected();
-		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
