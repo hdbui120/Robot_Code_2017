@@ -31,6 +31,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
 	UsbCamera cam;
+	UsbCamera cam2;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -52,6 +53,10 @@ public class Robot extends IterativeRobot {
 		cam.setResolution(160, 120);
 		cam.setFPS(30);
 		
+		cam2 = CameraServer.getInstance().startAutomaticCapture("cam2", 1);
+		cam2.setResolution(160, 120);
+		cam2.setFPS(30);
+		
 	}
 
 	/**
@@ -68,6 +73,7 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		cam.free();
+		cam2.free();
 	}
 
 	/**
