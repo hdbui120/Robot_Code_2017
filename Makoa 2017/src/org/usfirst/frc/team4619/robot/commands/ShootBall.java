@@ -3,9 +3,10 @@ package org.usfirst.frc.team4619.robot.commands;
 public class ShootBall extends CommandBase{
 
 	double shootingSpeed;
+	
 	public ShootBall(double Speed) {
 		requires(shooterMech);
-		shootingSpeed = Speed;
+		this.shootingSpeed = Speed;
 	}
 	
 	@Override
