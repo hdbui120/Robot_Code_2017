@@ -9,8 +9,9 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveBase extends PIDSubsystem{
+public class DriveBase extends Subsystem{
 
 	
 
@@ -28,7 +29,6 @@ public class DriveBase extends PIDSubsystem{
 	public RobotDrive driveTrain;
 	
 	public DriveBase() {
-		super("DriveBase", p, i, d);
 		rightEncoder = new Encoder(0, 1, false);
 		leftEncoder = new Encoder(2, 3, true);
 		gyro = new ADXRS450_Gyro();
@@ -115,18 +115,6 @@ public class DriveBase extends PIDSubsystem{
 	public Encoder getLeftEncoder()
 	{
 		return leftEncoder;
-	}
-	
-	@Override
-	protected double returnPIDInput() {
-		// TODO Auto-generated method stub
-		return rightEncoder.get();
-	}
-
-	@Override
-	protected void usePIDOutput(double output) {
-		// TODO Auto-generated method stub
-		arcadeDrive(output, 0);
 	}
 	
 }

@@ -7,44 +7,56 @@ public class DriveDistance extends CommandBase{
 	public DriveDistance(double setPoint)
 	{
 		requires(driveMech);
-		this.setPoint = setPoint;
 	}
 	
 	@Override
 	protected void initialize() {
-		driveMech.setSetpoint(setPoint);
-		driveMech.enable();
+		driveMech.getLeftEncoder().reset();
+		driveMech.getRightEncoder().reset();
 	}
 
-	@Override
-	protected void execute() 
+	protected void execute()
 	{
-	
+		if(driveMech.getLeftEncoder().get() == driveMech.getRightEncoder().get())
+		{
+			driveMech.moveForward();
+		}
+		else if(driveMech.getLeftEncoder().get() > driveMech.getRightEncoder().get())
+		{
+			driveMech.driveTrain.drive(0, -.3);
+		}
+		else
+		{
+			driveMech.driveTrain.drive(0, .3);
+		}
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return isInRange();
+		return isOnPoint();
 	}
 	
 	@Override
 	protected void end() {
-		driveMech.disable();
+		driveMech.doNothing();
 	}
 
 	@Override
 	protected void interrupted() {
-		driveMech.disable();
+		driveMech.doNothing();
 	}
 	
-	public boolean isInRange()
+	protected boolean isOnPoint()
 	{
-		double tolerance;
-		tolerance = Math.abs(setPoint - driveMech.getRightEncoder().get());
-		if(tolerance < .2)
+		if(driveMech.getLeftEncoder().get() == setPoint && driveMech.getRightEncoder().get() == setPoint)
+		{
 			return true;
-		return false;
+		}
+		else
+		{
+			return false;
+		}
 		
 	}
 	
