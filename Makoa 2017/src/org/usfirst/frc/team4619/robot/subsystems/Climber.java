@@ -6,10 +6,12 @@ import org.usfirst.frc.team4619.robot.commands.StopClimb;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem
 {
+	DigitalInput limitSwitch;
 	CANTalon motor;
 	double climbSpeed;
 	double zeroSpeed = 0;
@@ -24,6 +26,7 @@ public class Climber extends Subsystem
 	public Climber()
 	{
 		motor = new CANTalon(RobotMap.CAN_PORT_1);
+		limitSwitch = new DigitalInput(4);
 		motor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		motor.configNominalOutputVoltage(0, 0);
 		motor.configMaxOutputVoltage(12);
@@ -31,6 +34,11 @@ public class Climber extends Subsystem
 		motor.setP(0);
 		motor.setI(0);
 		motor.setD(0);
+	}
+	
+	public DigitalInput getLimitSwitch()
+	{
+		return limitSwitch;
 	}
 	
 	public CANTalon getMotor()

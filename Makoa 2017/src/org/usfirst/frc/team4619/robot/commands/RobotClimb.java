@@ -27,7 +27,7 @@ public class RobotClimb extends CommandBase
 
 	protected boolean isFinished() 
 	{
-		return false;
+		return isOn();
 	}
 
 	protected void end() 
@@ -38,6 +38,18 @@ public class RobotClimb extends CommandBase
 	protected void interrupted() 
 	{
 		climberMech.doNothing();
+	}
+	
+	protected boolean isOn()
+	{
+		if(climberMech.getLimitSwitch().get() && climberMech.getMotor().get() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }
