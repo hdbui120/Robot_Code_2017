@@ -1,33 +1,36 @@
 package org.usfirst.frc.team4619.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
-
-public class TimerDrive extends CommandBase{
+public class TimeDriveMod extends CommandBase{
 	
 	double time;
+	long startTime;
+	double speed;
 	
-	public TimerDrive(double time)
+	public TimeDriveMod(double time, double speed)
 	{
 		requires(driveMech);
 		this.time = time;
+		this.speed = speed;
 	}
 	
 	protected void initialize() 
 	{
-		setTimeout(time);
+		//setTimeout(this.time);
+		this.startTime = System.currentTimeMillis();
 	}
 
 	@Override
 	protected void execute() 
 	{
-		driveMech.driveTrain.drive(.6, 0);
+		driveMech.forwardMod(this.speed);
 	}
 	
 	@Override
 	protected boolean isFinished() 
 	{
 		// TODO Auto-generated method stub
-		return isTimedOut();
+		return System.currentTimeMillis() - this.startTime > this.time * 1000;
+		//return isTimedOut();
 	}
 	
 	@Override

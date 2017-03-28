@@ -3,9 +3,7 @@ package org.usfirst.frc.team4619.robot;
 
 import org.usfirst.frc.team4619.robot.commands.CommandBase;
 import org.usfirst.frc.team4619.robot.commands.DriveDistance;
-import org.usfirst.frc.team4619.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4619.robot.commands.ZeroDegree;
-import org.usfirst.frc.team4619.robot.commands.gearBaseLine;
+import org.usfirst.frc.team4619.robot.commands.TimeDriveMod;
 import org.usfirst.frc.team4619.robot.subsystems.ExampleSubsystem;
 
 import edu.wpi.cscore.UsbCamera;
@@ -31,7 +29,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser;
 	UsbCamera cam;
-	UsbCamera cam2;
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -41,21 +39,14 @@ public class Robot extends IterativeRobot {
 		CommandBase.init();
 		
 		chooser = new SendableChooser<>();
-		chooser.addDefault("Default Auto", new DriveDistance(0));//need to modify command
-		chooser.addObject("Base Line", new DriveDistance(7561));//need to modify command
-		chooser.addObject("Gear Only", new DriveDistance(3696));//need to modify command
-		chooser.addObject("High goal", new ExampleCommand());//need to modify command
-		chooser.addObject("Gear Base", new gearBaseLine());//need to modify command
-		chooser.addObject("Drive Straight 3s", new ZeroDegree(2));
+		chooser.addDefault("Default Auto", new DriveDistance(0));
+		chooser.addObject("Base Line", new TimeDriveMod(3, .5));
+		chooser.addObject("gear ", new TimeDriveMod(10, .3));
 		SmartDashboard.putData("Sup Chrissy, pick one: ", chooser);
 
 		cam = CameraServer.getInstance().startAutomaticCapture();
 		cam.setResolution(160, 120);
 		cam.setFPS(30);
-		
-		cam2 = CameraServer.getInstance().startAutomaticCapture("cam2", 1);
-		cam2.setResolution(160, 120);
-		cam2.setFPS(30);
 		
 	}
 
@@ -72,8 +63,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		cam.free();
-		cam2.free();
 	}
 
 	/**

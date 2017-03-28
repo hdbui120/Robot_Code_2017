@@ -1,9 +1,6 @@
 package org.usfirst.frc.team4619.robot;
 
-import org.usfirst.frc.team4619.robot.commands.HalfSpeedDrive;
 import org.usfirst.frc.team4619.robot.commands.RobotClimb;
-import org.usfirst.frc.team4619.robot.commands.StopClimb;
-import org.usfirst.frc.team4619.robot.commands.StopRobot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -18,7 +15,7 @@ public class OI {
 	Joystick xbox = new Joystick(RobotMap.XBOX_PORT);
 	
 	//created logitech joystick object
-	Joystick logitech = new Joystick(RobotMap.LOGITECH_PORT);
+	//Joystick logitech = new Joystick(RobotMap.LOGITECH_PORT);
 	
 	//created buttons for xbox joysticks
 	public Button A;
@@ -33,8 +30,6 @@ public class OI {
 	//create button for logitech joystick
 	public Button TRIGGER;
 	public Button BUTTON3;
-	
-	private int pressed = 0;
 	
 	//an array list of all the button values
 	public int[] buttonValues = {RobotMap.A, RobotMap.B, RobotMap.X, RobotMap.Y,
@@ -51,8 +46,8 @@ public class OI {
 			buttons[i] = new JoystickButton(xbox, buttonValues[i]);
 		}
 		
-		TRIGGER = new JoystickButton(logitech, RobotMap.TRIGGER);
-		BUTTON3 = new JoystickButton(logitech, RobotMap.BUTTON3);
+		//TRIGGER = new JoystickButton(logitech, RobotMap.TRIGGER);
+		//BUTTON3 = new JoystickButton(logitech, RobotMap.BUTTON3);
 	}
 	
 	//constructor
@@ -60,19 +55,8 @@ public class OI {
 	public OI()
 	{
 		setButtonValues();		
-		buttons[0].whileHeld(new RobotClimb(16));
-		buttons[1].whileHeld(new RobotClimb(-11));
-		TRIGGER.whenPressed(new StopClimb());
-		BUTTON3.whenPressed(new StopRobot());
-		driveHalfSpeed();
-	}
-	
-	public void driveHalfSpeed()
-	{
-		while(xbox.getRawAxis(RobotMap.L_TRIGGER)>0)
-		{
-			new HalfSpeedDrive();
-		}
+		buttons[0].whileHeld(new RobotClimb(.9));
+		buttons[1].whileHeld(new RobotClimb(.9));
 	}
 	
 	//this method return the raw value of the xbox x-axis

@@ -9,14 +9,12 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveBase extends Subsystem{
-
-	
-
-	private VictorSP frontL = new VictorSP(RobotMap.PWM_PORT_2);
-	private VictorSP backL = new VictorSP(RobotMap.PWM_PORT_0);
-	private VictorSP frontR = new VictorSP(RobotMap.PWM_PORT_5);
-	private VictorSP backR = new VictorSP(RobotMap.PWM_PORT_1);
+public class DriveBase extends Subsystem
+{	
+	private VictorSP frontL = new VictorSP(RobotMap.PWM_PORT_3);
+	private VictorSP backL = new VictorSP(RobotMap.PWM_PORT_2);
+	private VictorSP frontR = new VictorSP(RobotMap.PWM_PORT_1);
+	private VictorSP backR = new VictorSP(RobotMap.PWM_PORT_0);
 	private Encoder rightEncoder;
 	private Encoder leftEncoder;
 	public ADXRS450_Gyro gyro;
@@ -27,10 +25,14 @@ public class DriveBase extends Subsystem{
 	public RobotDrive driveTrain;
 	
 	public DriveBase() {
-		rightEncoder = new Encoder(0, 1, false);
-		leftEncoder = new Encoder(2, 3, true);
+		rightEncoder = new Encoder(2, 3, false);
+		leftEncoder = new Encoder(0, 1, true);
 		gyro = new ADXRS450_Gyro();
 		gyro.calibrate();
+		frontL.setInverted(true);
+		backL.setInverted(true);
+		frontR.setInverted(true);
+		backR.setInverted(true);
 	    driveTrain = new RobotDrive(frontL, backL, frontR, backR);
 	}
 	
@@ -83,6 +85,14 @@ public class DriveBase extends Subsystem{
 	public void turnL()
 	{
 		turnL(.75);
+	}
+	
+	public void forwardMod(double speed)
+	{
+		frontL.set(-speed);
+		frontR.set(speed*.965);
+		backL.set(-speed);
+		backR.set(speed*.965);
 	}
 	
 	public void turnL(double speed) 
